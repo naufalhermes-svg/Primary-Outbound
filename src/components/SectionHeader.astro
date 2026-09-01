@@ -1,0 +1,22 @@
+---
+// Reusable section header used by 8 sections.
+// Replaces 8 copies of: max-w-3xl + text-center + h2 + p.
+export interface Props {
+  title: string
+  subtitle?: string
+  align?: 'center' | 'left'
+}
+
+const { title, subtitle, align = 'center' } = Astro.props
+const containerClass = align === 'center' ? 'mx-auto max-w-3xl text-center' : 'max-w-3xl'
+---
+<header class={containerClass}>
+  <h2 class="font-heading text-3xl font-bold text-text md:text-4xl">
+    {title}
+  </h2>
+  {subtitle && (
+    <p class="mt-4 text-lg text-muted">
+      {subtitle}
+    </p>
+  )}
+</header>

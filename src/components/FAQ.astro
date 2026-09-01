@@ -1,16 +1,13 @@
 ---
 import { faqs } from '../content/faq'
+import SectionHeader from './SectionHeader.astro'
 ---
 <section id="faq" class="bg-stone py-20">
   <div class="mx-auto max-w-container px-4 md:px-8">
-    <div class="mx-auto max-w-3xl text-center">
-      <h2 class="font-heading text-3xl font-bold text-text md:text-4xl">
-        Pertanyaan Umum
-      </h2>
-      <p class="mt-4 text-lg text-muted">
-        Belum yakin? Cek pertanyaan yang sering ditanyakan.
-      </p>
-    </div>
+    <SectionHeader
+      title="Pertanyaan Umum"
+      subtitle="Belum yakin? Cek pertanyaan yang sering ditanyakan."
+    />
 
     <div class="mx-auto mt-12 max-w-3xl space-y-3">
       {faqs.map((faq, i) => (

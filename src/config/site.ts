@@ -20,11 +20,19 @@ export const site = {
   tiktok: '@primaryoutbound',
   address: 'Jl. Contoh No. 123, Kota, Provinsi',
 
+  // ---- DEFAULT WHATSAPP MESSAGE (used by general CTAs like Navbar/Hero/Footer) ----
+  defaultWhatsappMessage: 'Halo Primary Outbound, saya ingin info lebih lanjut tentang layanan outbound Anda.',
+
   // ---- URL (untuk SEO + sitemap) ----
   url: 'https://primary-outbound.vercel.app',
 } as const
 
-// Helper untuk generate link WhatsApp dengan pre-filled message.
-// Dipakai di Navbar, Hero, Categories, CTA, dll.
+// Helper untuk generate link WhatsApp dengan custom message.
+// Dipakai di CategoryCard, FAQ, dll.
 export const whatsappLink = (message: string): string =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`
+
+// Helper untuk link WhatsApp dengan default message (umum).
+// Dipakai di Navbar, Hero, Footer (general CTAs).
+export const generalWhatsappLink = (): string =>
+  whatsappLink(site.defaultWhatsappMessage)

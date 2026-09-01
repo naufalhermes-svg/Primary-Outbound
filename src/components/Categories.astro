@@ -1,18 +1,14 @@
 ---
 import { categories } from '../content/categories'
 import CategoryCard from './CategoryCard.astro'
+import SectionHeader from './SectionHeader.astro'
 ---
 <section id="kategori" class="bg-stone py-20">
   <div class="mx-auto max-w-container px-4 md:px-8">
-    <div class="mx-auto max-w-3xl text-center">
-      <h2 class="font-heading text-3xl font-bold text-text md:text-4xl">
-        Pilih Kegiatan Anda
-      </h2>
-      <p class="mt-4 text-lg text-muted">
-        Enam kategori outbound yang bisa disesuaikan untuk berbagai kebutuhan
-        — dari gathering kantor hingga study tour sekolah.
-      </p>
-    </div>
+    <SectionHeader
+      title="Pilih Kegiatan Anda"
+      subtitle="Enam kategori outbound yang bisa disesuaikan untuk berbagai kebutuhan — dari gathering kantor hingga study tour sekolah."
+    />
 
     <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {categories.map((category) => <CategoryCard category={category} />)}

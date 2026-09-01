@@ -1,32 +1,35 @@
 ---
+import Icon from './Icon.astro'
+import SectionHeader from './SectionHeader.astro'
+
 const reasons = [
   {
-    icon: '🛡️',
+    icon: 'ShieldCheck',
     title: 'Asuransi Kecelakaan',
     description: 'Semua peserta dilindungi asuransi selama kegiatan berlangsung.',
   },
   {
-    icon: '👥',
+    icon: 'UserCheck',
     title: 'Tim Profesional',
     description: 'Instruktur bersertifikat dengan pengalaman 10+ tahun.',
   },
   {
-    icon: '📸',
+    icon: 'Camera',
     title: 'Dokumentasi Lengkap',
     description: 'Foto + video kegiatan diserahkan via cloud setelah acara.',
   },
   {
-    icon: '🎯',
+    icon: 'Target',
     title: 'Custom Sesuai Budget',
     description: 'Paket fleksibel yang disesuaikan dengan budget Anda.',
   },
   {
-    icon: '⏰',
+    icon: 'Clock',
     title: 'Responsif 24/7',
     description: 'Tim customer service siap melayani via WhatsApp kapan saja.',
   },
   {
-    icon: '🌟',
+    icon: 'Star',
     title: '1000+ Peserta Puas',
     description: 'Dipercaya oleh 100+ perusahaan, sekolah, dan komunitas.',
   },
@@ -34,19 +37,17 @@ const reasons = [
 ---
 <section id="keunggulan" class="bg-stone py-20">
   <div class="mx-auto max-w-container px-4 md:px-8">
-    <div class="mx-auto max-w-3xl text-center">
-      <h2 class="font-heading text-3xl font-bold text-text md:text-4xl">
-        Mengapa Memilih Kami
-      </h2>
-      <p class="mt-4 text-lg text-muted">
-        Enam alasan kenapa klien kami selalu kembali.
-      </p>
-    </div>
+    <SectionHeader
+      title="Mengapa Memilih Kami"
+      subtitle="Enam alasan kenapa klien kami selalu kembali."
+    />
 
     <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {reasons.map((reason) => (
         <div class="flex gap-4 rounded-2xl bg-white p-6 shadow-sm transition-transform hover:scale-105">
-          <span class="text-4xl" aria-hidden="true">{reason.icon}</span>
+          <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+            <Icon name={reason.icon} size={20} />
+          </span>
           <div>
             <h3 class="font-heading text-lg font-semibold text-text">
               {reason.title}

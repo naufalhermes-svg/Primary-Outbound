@@ -1,5 +1,5 @@
 ---
-import { site, whatsappLink } from '../config/site'
+import { site, generalWhatsappLink } from '../config/site'
 
 const navLinks = [
   { href: '#tentang', label: 'Tentang' },
@@ -9,8 +9,7 @@ const navLinks = [
   { href: '#faq', label: 'FAQ' },
 ]
 
-const ctaMessage = 'Halo Primary Outbound, saya ingin info lebih lanjut tentang layanan outbound Anda.'
-const ctaUrl = whatsappLink(ctaMessage)
+const ctaUrl = generalWhatsappLink()
 ---
 <header
   id="navbar"

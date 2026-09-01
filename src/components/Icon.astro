@@ -1,0 +1,36 @@
+---
+// Icon wrapper around lucide. Use string icon names everywhere.
+// Renders all child nodes (path/circle/line/etc.) from the lucide icon definition.
+import { icons } from 'lucide'
+
+export interface Props {
+  name: string
+  size?: number
+  class?: string
+  strokeWidth?: number
+}
+
+const { name, size = 24, class: className, strokeWidth = 2 } = Astro.props
+const children: Array<[string, Record<string, string | number>]> = (icons as any)[name] ?? []
+
+function renderChild([tag, attrs]: [string, Record<string, string | number>]): string {
+  const attrStr = Object.entries(attrs)
+    .map(([k, v]) => `${k}="${v}"`)
+    .join(' ')
+  return `<${tag} ${attrStr}></${tag}>`
+}
+---
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width={size}
+  height={size}
+  viewBox="0 0 24 24"
+  fill="none"
+  stroke="currentColor"
+  stroke-width={strokeWidth}
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  class={className}
+>
+  <Fragment set:html={children.map(renderChild).join('')} />
+</svg>
