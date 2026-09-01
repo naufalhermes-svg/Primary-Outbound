@@ -1,0 +1,37 @@
+---
+import { testimonials } from '../content/testimonials'
+---
+<section id="testimoni" class="bg-white py-20">
+  <div class="mx-auto max-w-container px-4 md:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="font-heading text-3xl font-bold text-text md:text-4xl">
+        Apa Kata Mereka
+      </h2>
+      <p class="mt-4 text-lg text-muted">
+        Testimoni dari klien yang sudah berpengalaman dengan kami.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {testimonials.map((t) => (
+        <figure class="flex flex-col rounded-2xl bg-stone p-6 shadow-sm">
+          <blockquote class="flex-1 text-sm text-text">
+            <p>"{t.quote}"</p>
+          </blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <img
+              src={t.photo}
+              alt={t.name}
+              class="h-12 w-12 rounded-full object-cover"
+              loading="lazy"
+            />
+            <div>
+              <p class="font-semibold text-text">{t.name}</p>
+              <p class="text-xs text-muted">{t.role}</p>
+            </div>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>

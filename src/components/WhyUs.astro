@@ -1,0 +1,60 @@
+---
+const reasons = [
+  {
+    icon: '🛡️',
+    title: 'Asuransi Kecelakaan',
+    description: 'Semua peserta dilindungi asuransi selama kegiatan berlangsung.',
+  },
+  {
+    icon: '👥',
+    title: 'Tim Profesional',
+    description: 'Instruktur bersertifikat dengan pengalaman 10+ tahun.',
+  },
+  {
+    icon: '📸',
+    title: 'Dokumentasi Lengkap',
+    description: 'Foto + video kegiatan diserahkan via cloud setelah acara.',
+  },
+  {
+    icon: '🎯',
+    title: 'Custom Sesuai Budget',
+    description: 'Paket fleksibel yang disesuaikan dengan budget Anda.',
+  },
+  {
+    icon: '⏰',
+    title: 'Responsif 24/7',
+    description: 'Tim customer service siap melayani via WhatsApp kapan saja.',
+  },
+  {
+    icon: '🌟',
+    title: '1000+ Peserta Puas',
+    description: 'Dipercaya oleh 100+ perusahaan, sekolah, dan komunitas.',
+  },
+]
+---
+<section id="keunggulan" class="bg-stone py-20">
+  <div class="mx-auto max-w-container px-4 md:px-8">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2 class="font-heading text-3xl font-bold text-text md:text-4xl">
+        Mengapa Memilih Kami
+      </h2>
+      <p class="mt-4 text-lg text-muted">
+        Enam alasan kenapa klien kami selalu kembali.
+      </p>
+    </div>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      {reasons.map((reason) => (
+        <div class="flex gap-4 rounded-2xl bg-white p-6 shadow-sm transition-transform hover:scale-105">
+          <span class="text-4xl" aria-hidden="true">{reason.icon}</span>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-text">
+              {reason.title}
+            </h3>
+            <p class="mt-1 text-sm text-muted">{reason.description}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

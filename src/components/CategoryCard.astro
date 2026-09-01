@@ -1,0 +1,59 @@
+---
+import type { Category } from '../content/categories'
+import { whatsappLink } from '../config/site'
+
+export interface Props {
+  category: Category
+}
+
+const { category } = Astro.props
+const waUrl = whatsappLink(category.waMessage)
+
+const images = Array.from(
+  { length: category.imageCount },
+  (_, i) => `/images/${category.id}/${category.id}-${i + 1}.jpg`
+)
+---
+<article class="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm transition-all hover:shadow-lg">
+  {images.length > 0 && (
+    <div class="grid grid-cols-2 gap-1 p-1">
+      {images.slice(0, 4).map((src, i) => (
+        <div class={`overflow-hidden ${i === 0 ? 'col-span-2 aspect-video' : 'aspect-square'}`}>
+          <img
+            src={src}
+            alt={`${category.title} ${i + 1}`}
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+  )}
+
+  <div class="flex flex-1 flex-col p-6">
+    <div class="flex items-center gap-2">
+      <span class="inline-flex h-8 w-8 items-center justify-center rounded-full bg-secondary/10 text-secondary">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          {category.icon === 'Gamepad2' && (<><line x1="6" y1="11" x2="10" y2="11"></line><line x1="8" y1="9" x2="8" y2="13"></line><line x1="15" y1="12" x2="15.01" y2="12"></line><line x1="18" y1="10" x2="18.01" y2="10"></line><path d="M17.32 5H6.68a4 4 0 0 0-3.978 3.59c-.006.052-.01.101-.017.152C2.604 9.416 2 14.456 2 16a3 3 0 0 0 3 3c1 0 1.5-.5 2-1l1.414-1.414A2 2 0 0 1 9.828 16h4.344a2 2 0 0 1 1.414.586L17 18c.5.5 1 1 2 1a3 3 0 0 0 3-3c0-1.545-.604-6.584-.685-7.258A4 4 0 0 0 17.32 5Z"></path></>)}
+          {category.icon === 'Users' && (<><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></>)}
+          {category.icon === 'Map' && (<><polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21 3 6"></polygon><line x1="9" y1="3" x2="9" y2="18"></line><line x1="15" y1="6" x2="15" y2="21"></line></>)}
+          {category.icon === 'Waves' && (<><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path></>)}
+          {category.icon === 'Truck' && (<><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"></path><path d="M15 18H9"></path><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"></path><circle cx="17" cy="18" r="2"></circle><circle cx="7" cy="18" r="2"></circle></>)}
+          {category.icon === 'Sparkles' && (<><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3L12 3Z"></path></>)}
+        </svg>
+      </span>
+      <h3 class="font-heading text-xl font-semibold text-text">
+        {category.title}
+      </h3>
+    </div>
+    <p class="mt-3 flex-1 text-sm text-muted">{category.description}</p>
+    <a
+      href={waUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-4 inline-flex items-center justify-center rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:scale-105"
+    >
+      Chat untuk paket ini
+    </a>
+  </div>
+</article>

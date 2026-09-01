@@ -1,0 +1,72 @@
+---
+import { site, whatsappLink } from '../config/site'
+
+const ctaMessage = 'Halo Primary Outbound, saya ingin info lebih lanjut tentang layanan outbound Anda.'
+const ctaUrl = whatsappLink(ctaMessage)
+
+const heroImages = [
+  { src: '/images/hero/hero-1.jpg', alt: 'Kegiatan outbound 1' },
+  { src: '/images/hero/hero-2.jpg', alt: 'Kegiatan outbound 2' },
+  { src: '/images/hero/hero-3.jpg', alt: 'Kegiatan outbound 3' },
+]
+---
+<section
+  id="hero"
+  class="relative isolate flex min-h-[80vh] items-center overflow-hidden bg-primary text-white"
+>
+  <div class="absolute inset-0 -z-10">
+    {heroImages.map((img, i) => (
+      <img
+        src={img.src}
+        alt={img.alt}
+        class={`hero-slide absolute inset-0 h-full w-full object-cover opacity-0 transition-opacity duration-1000 ${i === 0 ? 'opacity-100' : ''}`}
+        data-slide-index={i}
+        loading={i === 0 ? 'eager' : 'lazy'}
+      />
+    ))}
+    <div class="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/40 to-primary/80"></div>
+  </div>
+
+  <div class="mx-auto max-w-container px-4 py-20 md:px-8">
+    <div class="max-w-2xl">
+      <h1 class="font-heading text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
+        {site.tagline}
+      </h1>
+      <p class="mt-4 text-lg text-stone md:text-xl">
+        Fun games, team building, rafting, offroad — semua bisa disesuaikan
+        untuk corporate, sekolah, dan keluarga.
+      </p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={ctaUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-full bg-secondary px-8 py-3 text-base font-semibold text-white transition-transform hover:scale-105"
+        >
+          Chat WhatsApp
+        </a>
+        <a
+          href="#kategori"
+          class="inline-flex items-center justify-center rounded-full border-2 border-white bg-transparent px-8 py-3 text-base font-semibold text-white transition-colors hover:bg-white hover:text-primary"
+        >
+          Lihat Paket
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const slides = document.querySelectorAll<HTMLImageElement>('.hero-slide')
+  let current = 0
+
+  if (slides.length > 1) {
+    setInterval(() => {
+      slides[current].classList.remove('opacity-100')
+      slides[current].classList.add('opacity-0')
+      current = (current + 1) % slides.length
+      slides[current].classList.remove('opacity-0')
+      slides[current].classList.add('opacity-100')
+    }, 5000)
+  }
+</script>

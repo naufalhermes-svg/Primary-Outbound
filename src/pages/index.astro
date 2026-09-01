@@ -1,9 +1,27 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Navbar from '../components/Navbar.astro'
+import Hero from '../components/Hero.astro'
+import About from '../components/About.astro'
+import Categories from '../components/Categories.astro'
+import Process from '../components/Process.astro'
+import WhyUs from '../components/WhyUs.astro'
+import Testimonials from '../components/Testimonials.astro'
+import FAQ from '../components/FAQ.astro'
+import CTA from '../components/CTA.astro'
+import Footer from '../components/Footer.astro'
 ---
 <BaseLayout>
-  <main>
-    <h1 class="text-4xl font-bold text-primary">Primary Outbound</h1>
-    <p>Scaffold OK. Sections coming next.</p>
+  <Navbar />
+  <Hero />
+  <main id="top">
+    <About />
+    <Categories />
+    <Process />
+    <WhyUs />
+    <Testimonials />
+    <FAQ />
+    <CTA />
   </main>
+  <Footer />
 </BaseLayout>
